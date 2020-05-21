@@ -8,8 +8,22 @@
               <v-toolbar-title>Login form</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <v-text-field prepend-icon="mdi-account" name="login" label="Login" type="text"></v-text-field>
-              <v-text-field prepend-icon="mdi-lock" name="password" label="Password" type="password"></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-account"
+                name="email"
+                label="Email"
+                type="text"
+                v-model="email"
+                :rules="[rules.required, rules.email]"
+              ></v-text-field>
+              <v-text-field
+                prepend-icon="mdi-lock"
+                name="password"
+                label="Password"
+                type="password"
+                v-model="password"
+                :rules="[rules.required]"
+              ></v-text-field>
             </v-card-text>
             <v-divider light></v-divider>
             <v-card-actions>
@@ -30,6 +44,17 @@
 
 <script>
 export default {
-  name: "login"
+  name: "login",
+  data: () => ({
+    password: "",
+    email: "",
+    rules: {
+      required: value => !!value || "Required",
+      email: value => {
+        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return pattern.test(value) || "Invalid e-mail.";
+      }
+    }
+  })
 };
 </script>
