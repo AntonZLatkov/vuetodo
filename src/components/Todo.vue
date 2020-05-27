@@ -7,11 +7,11 @@
         </v-flex>
 
         <v-flex lg6 pr-2 pl-2>
-          Tasks
+          <Tasks></Tasks>
         </v-flex>
 
         <v-flex lg3 pl-2>
-          Options
+          <OptionsBar> </OptionsBar>
         </v-flex>
       </v-layout>
     </v-container>
@@ -32,11 +32,15 @@
 // import Login from './Auth/Login';
 // import Signup from './Auth/Signup';
 import Lists from './Lists'
+import Tasks from './Tasks'
+import OptionsBar from './OptionsBar'
 
 export default {
   name: "todo",
   components: {
-    Lists
+    Lists,
+    Tasks,
+    OptionsBar
   }
 }
 </script>
